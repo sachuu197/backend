@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const db = require("../models");
-const User = db.user;
+const Person = db.person;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -25,8 +25,8 @@ verifyToken = (req, res, next) => {
 
 
 isStudent= (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  Person.findByPk(req.userId).then(person => {
+    person.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "student") {
           next();
@@ -43,8 +43,8 @@ isStudent= (req, res, next) => {
 
 
 isHod = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  Person.findByPk(req.userId).then(person => {
+    person.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "hod") {
           next();
@@ -61,8 +61,8 @@ isHod = (req, res, next) => {
 };
 
 isDirector= (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  Person.findByPk(req.userId).then(person => {
+    person.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "director") {
           next();
@@ -78,8 +78,8 @@ isDirector= (req, res, next) => {
 };
 
 isGuide = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  Person.findByPk(req.userId).then(person => {
+    person.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "guide") {
           next();

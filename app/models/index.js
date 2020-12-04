@@ -24,17 +24,17 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require("../models/user.model.js")(sequelize, Sequelize);
+db.person = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
-db.role.belongsToMany(db.user, {
+db.role.belongsToMany(db.person, {
   through: "user_roles",
   foreignKey: "roleId",
-  otherKey: "userId"
+  otherKey: "Person_Id"
 });
-db.user.belongsToMany(db.role, {
+db.person.belongsToMany(db.role, {
   through: "user_roles",
-  foreignKey: "userId",
+  foreignKey: "Person_Id",
   otherKey: "roleId"
 });
 

@@ -3,7 +3,7 @@ exports.allAccess = (req, res) => {
   };
   
   exports.studentBoard = (req, res) => {
-    res.status(200).send("Student Content.");
+    res.status(200).send("Students Content.");
   };
   
   exports.guideBoard = (req, res) => {
